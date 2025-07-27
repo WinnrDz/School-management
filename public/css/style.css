@@ -4,16 +4,13 @@
 @layer demo {
   .grid {
     --grid-cols: 1fr;
+    @media (width > 400px) {
+      --grid-cols: 1fr 1fr;
+    }
     display: grid;
     grid-template-columns: var(--grid-cols);
     gap: 1rem;
     width: min(calc(100% - 2rem), 800px);
-  }
-
-  @media (min-width: 400px) {
-    .grid {
-      --grid-cols: 1fr 1fr;
-    }
   }
 
   .grid > div {
@@ -22,8 +19,7 @@
     display: grid;
     place-content: center;
     color: white;
-    border-radius: 25px;
-
+    border-radius: 5px;
     @container style(--grid-cols: 1fr 1fr) {
       &:nth-child(1n) {
         place-content: end;
@@ -36,20 +32,13 @@
 
   form {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  form .grid > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    display: grid;
+    gap: 1rem;
   }
 
   form label {
-    color: white;
+    margin-bottom: 0.5rem;
+    display: block;
     font-weight: bold;
   }
 
@@ -61,12 +50,7 @@
     font-size: 1rem;
     border-radius: 5px;
     border: none;
-  }
-
-  form input,
-  form select {
-    background-color: #2e2e2e;
-    color: white;
+    margin-top: 0.25rem;
   }
 
   form button {
@@ -82,6 +66,56 @@
 
   .full-width {
     grid-column: 1 / -1;
+  }
+
+  nav.navbar {
+    width: 100%;
+    background-color: darkslateblue;
+    padding: 1rem;
+  }
+
+  nav .container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .logo {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  main {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    margin-top: 10%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -102,22 +136,21 @@
   body {
     background-color: light-dark(var(--bg-light), var(--bg-dark));
     color: light-dark(var(--txt-light), var(--txt-dark));
-    min-height: 100svh;
+    min-height: 100vh;
     margin: 0;
-    padding: 1rem;
+    padding: 0;
     font-family: "Jura", sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     display: flex;
-    place-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
   }
 
   h1 {
-    margin: 0;
-    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-size: 1.75rem;
+    text-align: center;
   }
 
   .msg-supports {

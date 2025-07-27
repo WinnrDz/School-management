@@ -14,7 +14,7 @@ use App\Http\Controllers\SchoolClassController;
 |
 */
 
-Route::get('/', [SchoolClassController::class, "index"])->name("schollClasses.index");
+Route::get('/', [SchoolClassController::class, "index"])->name("schoolClasses.index");
 
 Route::get('/create', [SchoolClassController::class, "create"])->name("schoolClasses.create");
 
