@@ -1,0 +1,129 @@
+@import url(https://fonts.bunny.net/css?family=jura:300,500);
+@layer base, demo;
+
+@layer demo {
+  .grid {
+    --grid-cols: 1fr;
+    display: grid;
+    grid-template-columns: var(--grid-cols);
+    gap: 1rem;
+    width: min(calc(100% - 2rem), 800px);
+  }
+
+  @media (min-width: 400px) {
+    .grid {
+      --grid-cols: 1fr 1fr;
+    }
+  }
+
+  .grid > div {
+    background-color: steelblue;
+    padding: 1rem;
+    display: grid;
+    place-content: center;
+    color: white;
+    border-radius: 5px;
+
+    @container style(--grid-cols: 1fr 1fr) {
+      &:nth-child(1n) {
+        place-content: end;
+      }
+      &:nth-child(2n) {
+        place-content: start;
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form .grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  form label {
+    color: white;
+    font-weight: bold;
+  }
+
+  form input,
+  form select,
+  form button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+  }
+
+  form input,
+  form select {
+    background-color: #2e2e2e;
+    color: white;
+  }
+
+  form button {
+    background-color: darkslateblue;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  form button:hover {
+    opacity: 0.9;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    color-scheme: light dark;
+    --bg-dark: rgb(16, 24, 40);
+    --bg-light: rgb(255, 237, 212);
+    --txt-light: rgb(10, 10, 10);
+    --txt-dark: rgb(245, 245, 245);
+    --supports-style-queries: true;
+  }
+
+  body {
+    background-color: light-dark(var(--bg-light), var(--bg-dark));
+    color: light-dark(var(--txt-light), var(--txt-dark));
+    min-height: 100svh;
+    margin: 0;
+    padding: 1rem;
+    font-family: "Jura", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .msg-supports {
+    font-size: 0.8rem;
+    @container style(--supports-style-queries: true) {
+      display: none;
+    }
+  }
+}
