@@ -22,7 +22,7 @@
     display: grid;
     place-content: center;
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
 
     @container style(--grid-cols: 1fr 1fr) {
       &:nth-child(1n) {
