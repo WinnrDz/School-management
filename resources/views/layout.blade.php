@@ -16,6 +16,8 @@
             <li><a href="#">Students</a></li>
             <li><a href="#">Teachers</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="{{ route('login') }}">login</a></li>
+            <li><a href="{{ route('register') }}">register</a></li>
         </ul>
     </nav>
 
