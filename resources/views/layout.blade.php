@@ -12,8 +12,8 @@
     <nav class="navbar">
         <div class="logo">School Management</div>
         <ul class="nav-links">
-            <li><a href="#">Classes</a></li>
-            <li><a href="#">Students</a></li>
+            <li><a href="{{ route('schoolClasses.index') }}">Classes</a></li>
+            <li><a href="{{ route('students.index') }}">Students</a></li>
             <li><a href="#">Teachers</a></li>
             <li><a href="#">About</a></li>
             <li><a href="{{ route('login') }}">login</a></li>

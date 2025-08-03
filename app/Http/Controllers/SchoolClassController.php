@@ -37,7 +37,7 @@ class SchoolClassController extends Controller
         ]);
 
         SchoolClass::create($validatedData);
-        return redirect()->route('schollClasses.index')->with('success', "Class created.");
+        return redirect()->route('schoolClasses.index')->with('success', "Class created.");
     }
 
     /**

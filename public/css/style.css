@@ -124,14 +124,15 @@
     box-sizing: border-box;
   }
 
-  :root {
-    color-scheme: light dark;
-    --bg-dark: rgb(16, 24, 40);
-    --bg-light: rgb(255, 237, 212);
-    --txt-light: rgb(10, 10, 10);
-    --txt-dark: rgb(245, 245, 245);
-    --supports-style-queries: true;
-  }
+ :root {
+  color-scheme: light dark;
+  --bg-dark: rgb(16, 24, 40);
+  --bg-light: rgb(30, 30, 30); /* was: rgb(255, 237, 212) */
+  --txt-light: rgb(245, 245, 245); /* was: 10,10,10 */
+  --txt-dark: rgb(245, 245, 245);
+  --supports-style-queries: true;
+}
+
 
   body {
     background-color: light-dark(var(--bg-light), var(--bg-dark));

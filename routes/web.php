@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SchoolClassController;
-
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/create', [SchoolClassController::class, "create"])->name("schoolClasses.create");
     Route::post('/store', [SchoolClassController::class, "store"])->name("schoolClasses.store");
+    
+    Route::resource('students', StudentController::class);
 });
 
 require __DIR__ . '/auth.php';
