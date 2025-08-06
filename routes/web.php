@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AttendanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/store', [SchoolClassController::class, "store"])->name("schoolClasses.store");
     
     Route::resource('students', StudentController::class);
+
+    Route::resource('attendances', AttendanceController::class);
 });
 
 require __DIR__ . '/auth.php';

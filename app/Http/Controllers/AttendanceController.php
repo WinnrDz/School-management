@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -12,7 +13,9 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        $attendances = Attendance::all();
+
+        return view("attendances.index",compact("attendances"));
     }
 
     /**
@@ -20,7 +23,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::all();
+        return view("attendances.create", compact("students"));
     }
 
     /**
@@ -28,7 +32,15 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => 'required',
+            'date' => 'required',
+            'student_id' => 'required'
+        ]
+        );
+
+        Attendance::create($validatedData);
+        return redirect()->route('attendances.index')->with('success', "attendance created.");
     }
 
     /**
