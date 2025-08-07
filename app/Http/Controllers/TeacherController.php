@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+
 
 class TeacherController extends Controller
 {
@@ -12,7 +14,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+
+        return view("teachers.index",compact("teachers"));
     }
 
     /**
@@ -20,7 +24,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        return view("teachers.create", compact("subjects"));
     }
 
     /**
@@ -28,7 +33,14 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'subject_id' => 'required'
+        ]
+        );
+
+        Teacher::create($validatedData);
+        return redirect()->route('teachers.index')->with('success', "teacher created.");
     }
 
     /**

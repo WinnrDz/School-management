@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\grade;
+use App\Models\Grade;
 use Illuminate\Http\Request;
+use App\Models\Subject;
+use App\Models\Student;
 
 class GradeController extends Controller
 {
@@ -12,7 +14,9 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        $grades = Grade::all();
+
+        return view("grades.index",compact("grades"));
     }
 
     /**
@@ -20,7 +24,10 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        $students = Student::all();
+
+        return view("grades.create", compact("students","subjects"));
     }
 
     /**
@@ -28,38 +35,21 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'grade' => 'required',
+            'subject_id' => 'required',
+            'student_id' => 'required'
+        ]
+        );
+
+        Grade::create($validatedData);
+        return redirect()->route('grades.index')->with('success', "grade created.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(grade $grade)
+    public function show(Grade $grade)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(grade $grade)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, grade $grade)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(grade $grade)
-    {
-        //
     }
 }

@@ -14,10 +14,14 @@
         <ul class="nav-links">
             <li><a href="{{ route('schoolClasses.index') }}">Classes</a></li>
             <li><a href="{{ route('students.index') }}">Students</a></li>
-            <li><a href="#">Teachers</a></li>
+            <li><a href="{{ route('attendances.index') }}">attendances</a></li>
+            <li><a href="{{ route('teachers.index') }}">Teachers</a></li>
+            <li><a href="{{ route('subjects.index') }}">Subjects</a></li>
+            <li><a href="{{ route('grades.index') }}">Grades</a></li>
             <li><a href="#">About</a></li>
             <li><a href="{{ route('login') }}">login</a></li>
             <li><a href="{{ route('register') }}">register</a></li>
+            
         </ul>
     </nav>
 

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
             $table->float("grade");
-            $table->string("subject");
             $table->timestamps();
 
             $table->foreignId("subject_id")->constrained();

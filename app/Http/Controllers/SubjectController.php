@@ -12,7 +12,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::all();
+
+        return view("subjects.index",compact("subjects"));
     }
 
     /**
@@ -20,7 +22,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view("subjects.create");
     }
 
     /**
@@ -28,7 +30,13 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]
+        );
+
+        Subject::create($validatedData);
+        return redirect()->route('subjects.index')->with('success', "subject created.");
     }
 
     /**
@@ -63,3 +71,4 @@ class SubjectController extends Controller
         //
     }
 }
+

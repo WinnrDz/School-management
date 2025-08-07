@@ -19,6 +19,6 @@
         @endforelse
     </div>
 
-    <a href="{{ route('attendances.create') }}" style="margin-top: 1rem; color: pink;">Create attendance</a>
+    <a href="{{ route('attendances.create') }}" style="margin-top: 1rem; color: pink;">Mark attendance</a>
 </main>
 @endsection
