@@ -30,15 +30,18 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
+     Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/create', [SchoolClassController::class, "create"])->name("schoolClasses.create");
-    Route::post('/store', [SchoolClassController::class, "store"])->name("schoolClasses.store");
-    
+
+    Route::resource('schoolClasses', SchoolClassController::class);
+
     Route::resource('students', StudentController::class);
 
     Route::resource('attendances', AttendanceController::class);
